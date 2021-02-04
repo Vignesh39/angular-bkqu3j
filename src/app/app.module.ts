@@ -16,6 +16,7 @@ import { PageNotFoundComponent } from "./page-not-found/page-not-found.component
 import { ErrorComponent } from "./error/error.component";
 import { InternalServerErrorComponent } from "./internal-server-error/internal-server-error.component";
 import { DoublePipe } from './double.pipe';
+import { HighlightDirective } from './highlight.directive';
 
 @NgModule({
   imports: [
@@ -47,7 +48,8 @@ import { DoublePipe } from './double.pipe';
     PageNotFoundComponent,
     ErrorComponent,
     InternalServerErrorComponent,
-    DoublePipe
+    DoublePipe,
+    HighlightDirective
   ],
   bootstrap: [AppComponent],
   providers: [CartService]

@@ -1,8 +1,8 @@
 <h3>Shipping Prices</h3>
 
 <div class="shippingCosts" *ngFor="let shipping of shippingCosts">
-	<span> {{shipping.type}} </span>
-	<span> {{shipping.price}} </span>
+	<span appHighlight> {{shipping.type}} </span>
+	<span appHighlight = "yellow"> {{shipping.price}} </span>
 </div>
 <a [routerLink]="['/page-not-found']">
 	<h1>page-not-found</h1>
