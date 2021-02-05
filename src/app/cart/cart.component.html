@@ -5,10 +5,28 @@
 <a (click)="internalError()"> 500</a>
 
 <p>
-	<a routerLink="/shipping">ShippingPrices</a>
+  <a routerLink="/shipping">ShippingPrices</a>
 </p>
 
 <div *ngFor="let item of items">
-	<span> {{ item.name }} </span>
-	<span> {{ item.price | currency }} </span>
+  <span> {{ item.name }} </span>
+  <span> {{ item.price | currency }} </span>
 </div>
+
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">
+      Name
+    </label>
+    <input id="Name" type="text" formControlName="name" />
+  </div>
+  <div>
+    <label for="address">
+      Address
+    </label>
+    <input id="Address" type="text" formControlName="address" />
+  </div>
+  <button class="button" type="submit" [disabled]="!checkoutForm.valid">
+    Purchase
+  </button>
+</form>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { CartService } from "../cart.service";
 import { Router } from "@angular/router";
+import { FormBuilder, Validators } from "@angular/forms";
 @Component({
   selector: "app-cart",
   templateUrl: "./cart.component.html",
@@ -8,7 +9,15 @@ import { Router } from "@angular/router";
 })
 export class CartComponent implements OnInit {
   items = this.cartService.getItems();
-  constructor(private cartService: CartService, private route: Router) {}
+  checkoutForm = this.formBuilder.group({
+    name: ["", Validators.required],
+    address: ""
+  });
+  constructor(
+    private cartService: CartService,
+    private route: Router,
+    private formBuilder: FormBuilder
+  ) {}
 
   ngOnInit() {}
 
@@ -22,5 +31,11 @@ export class CartComponent implements OnInit {
 
   internalError() {
     this.route.navigateByUrl("internal-server-error");
+  }
+
+  onSubmit(): void {
+    this.items = this.cartService.clearCart();
+    console.warn("Your oder has been submitted", this.checkoutForm.value);
+    this.checkoutForm.reset();
   }
 }
