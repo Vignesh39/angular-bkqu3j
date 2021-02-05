@@ -8,9 +8,12 @@
   <a routerLink="/shipping">ShippingPrices</a>
 </p>
 
-<div *ngFor="let item of items">
+<div class="item" *ngFor="let item of items">
   <span> {{ item.name }} </span>
   <span> {{ item.price | currency }} </span>
+  <button [style]="'background-color:red'" (click)="removeitem(productnumber)">
+    X
+  </button>
 </div>
 
 <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
